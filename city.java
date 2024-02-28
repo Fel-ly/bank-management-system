@@ -1,8 +1,9 @@
-public class city {
+public class City {
     String cityName;
     String regionName;
 
-    public void City(String cityName, String regionName) {
+    //adding a City constructor
+    public void city(String cityName, String regionName) {
         this.cityName = cityName;
         this.regionName = regionName;
     }
