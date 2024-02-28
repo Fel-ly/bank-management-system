@@ -3,7 +3,7 @@ public class City {
     String regionName;
 
     //adding a City constructor
-    public void city(String cityName, String regionName) {
+    public City(String cityName, String regionName) {
         this.cityName = cityName;
         this.regionName = regionName;
     }
