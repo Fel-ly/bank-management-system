@@ -75,7 +75,9 @@ public class MainFrame extends JFrame {
         depositBTN = new JButton("Deposit");
         withdrawBTN = new JButton("Withdraw");
 
-
+        //table
+        accountsLSTMDL = new DefaultListModel<>();
+        accountLST = new JList<>(accountsLSTMDL);
 
     }
 
