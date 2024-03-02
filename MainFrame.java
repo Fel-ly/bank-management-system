@@ -95,6 +95,38 @@ public class MainFrame extends JFrame {
         p5 = new JPanel(); p5.setBounds(5,240,580,120);
         p5.setLayout(new BorderLayout());
 
+        //add components to panel
+        p1.add(accNoLBL);
+        p1.add(accNoTXT);
+        p1.add(ownerLBL);
+        p1.add(ownerTXT);
+        p1.add(balanceLBL);
+        p1.add(balanceTXT);
+        p1.add(cityLBL);
+        p1.add(citiesCMB);
+        p1.add(maleRDB);
+        p1.add(femaleRDB);
+
+        p2.add(newBTN);
+        p2.add(saveBTN);
+        p2.add(showBTN);
+        p2.add(quitBTN);
+
+        p3.add(amountLBL);
+        p3.add(amountTXT);
+        p3.add(depositBTN);
+        p3.add(withdrawBTN);
+
+        p4.add(accountLST);
+
+
+        //add panels to the frame
+        add(p1);
+        add(p2);
+        add(p3);
+        add(p4);
+        add(p5);
+
     }
 
     public static void main(String[] args) {
