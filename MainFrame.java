@@ -127,6 +127,18 @@ public class MainFrame extends JFrame {
         add(p4);
         add(p5);
 
+        //creating table
+        tableModel = new DefaultTableModel();
+
+        table = new JTable(tableModel);
+        tableModel.addColumn("transactionNo");
+        tableModel.addColumn("transactionDate");
+        tableModel.addColumn("transactionType");
+        tableModel.addColumn("transactionAmount");
+
+
+
+
     }
 
     public static void main(String[] args) {
