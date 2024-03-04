@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
@@ -131,14 +133,64 @@ public class MainFrame extends JFrame {
         tableModel = new DefaultTableModel();
 
         table = new JTable(tableModel);
-        tableModel.addColumn("transactionNo");
-        tableModel.addColumn("transactionDate");
-        tableModel.addColumn("transactionType");
-        tableModel.addColumn("transactionAmount");
+        tableModel.addColumn("Transaction No");
+        tableModel.addColumn("Transaction Date");
+        tableModel.addColumn("Transaction Type");
+        tableModel.addColumn("Transaction Amount");
 
+        JScrollPane scrollpane = new JScrollPane(table);
+        p5.add(scrollpane);
 
+        // adding functionality of the buttons
+        newBTN.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                accNoTXT.setText("");
+                ownerLBL.setText("");
+                citiesCMB.setSelectedIndex(0);
+                maleRDB.setSelected(true);
+                balanceTXT.setText("");
+                amountTXT.setText("");
+                newRecord = true;
+            }
+        });
 
+        saveBTN.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (newRecord) {
+                            // Insertion of a new record
+                    if  (ownerTXT.getText().length() != 0) {
+                        acc = new Account(
+                                ownerTXT.getText(),
+                                (City) citiesCMB.getSelectedItem(),
+                                maleRDB.isSelected()? 'M' : 'F'
+                        );
+                        accNoTXT.setText(String.valueOf(acc.accountNo));
+                        accountset.add(acc);
+                        accountsLSTMDL.addElement(acc);
+                        newRecord = false;
+                    } else {
+                        JOptionPane.showMessageDialog(null,"Please fill all fields to proceed");
+                    }
+                }
+                else {
+                            // updating an existing record
+                    accountset.remove(acc);
 
+                    int a = Integer.parseInt(accNoTXT.getText());
+                    String o = ownerTXT.getText();
+                    City c = (City) citiesCMB.getSelectedItem();
+
+                    char g  = maleRDB.isSelected()? 'M' : 'F';
+                    double b = Double.parseDouble(balanceTXT.getText());
+                    acc = new Account(a,o,c,g,b);
+                    accountset.add(acc);
+                    accountsLSTMDL.setElementAt(acc, accountLST.getSelectedIndex());
+                    newRecord = false;
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
